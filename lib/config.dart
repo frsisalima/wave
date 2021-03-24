@@ -18,6 +18,7 @@ abstract class Config {
 
   Config({this.colorMode});
 
+  void throwNullError(String colorModeStr, String configStr);
 }
 
 class CustomConfig extends Config {
@@ -76,7 +77,7 @@ class CustomConfig extends Config {
         assert(colors == null || gradients == null,
             'Cannot provide both colors and gradients.'),
         super(colorMode: ColorMode.custom);
-  
+  @override
   void throwNullError(String colorModeStr, String configStr) {
     throw FlutterError(
         'When using `ColorMode.$colorModeStr`, `$configStr` must be set.');
