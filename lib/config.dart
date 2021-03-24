@@ -40,7 +40,7 @@ class CustomConfig extends Config {
   })  : assert(() {
           if (colors == null && gradients == null) {
             throw FlutterError(
-        'When using ColorMode.custom, colors or gradients must be set.')
+        'When using ColorMode.custom, colors or gradients must be set.');
           }
           return true;
         }()),
