@@ -38,12 +38,12 @@ class CustomConfig extends Config {
     @required this.heightPercentages,
     this.blur,
   })  : assert(() {
-          if (colors == null && gradients == null) {
-            throw FlutterError(
-        'When using ColorMode.custom, colors or gradients must be set.');
-          }
-          return true;
-        }()),
+    if (colors == null && gradients == null) {
+      throw FlutterError(
+          'When using ColorMode.custom, colors or gradients must be set.');
+    }
+    return true;
+  }()),
         assert(() {
           if (gradients == null &&
               (gradientBegin != null || gradientEnd != null)) {
@@ -54,13 +54,15 @@ class CustomConfig extends Config {
         }()),
         assert(() {
           if (durations == null) {
-            throwNullError('custom', 'durations');
+            throw FlutterError(
+                'When using ColorMode.custom, durations must be set.');
           }
           return true;
         }()),
         assert(() {
           if (heightPercentages == null) {
-            throwNullError('custom', 'heightPercentages');
+            throw FlutterError(
+                'When using ColorMode.custom, heightPercentages must be set.');
           }
           return true;
         }()),
@@ -75,13 +77,9 @@ class CustomConfig extends Config {
           return true;
         }()),
         assert(colors == null || gradients == null,
-            'Cannot provide both colors and gradients.'),
+        'Cannot provide both colors and gradients.'),
         super(colorMode: ColorMode.custom);
-  void throwNullError(String colorModeStr, String configStr) {
-    throw FlutterError(
-        'When using `ColorMode.$colorModeStr`, `$configStr` must be set.');
-  }
-  
+
 }
 
 /// todo
